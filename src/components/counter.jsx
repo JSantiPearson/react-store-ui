@@ -17,10 +17,26 @@ class Counter extends Component {
     );
   }
 
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
   render() {
-    return <div>{this.renderTags()}</div>;
+    return (
+      <div>
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
+        {/* {this.state.tags.length === 0 && "Please add a tag!"}
+        {this.renderTags()} */}
+      </div>
+    );
   }
-  /*getBadgeClasses() {
+  getBadgeClasses() {
     let classes = "badge m-2 badge-";
     classes += this.state.count === 0 ? "warning" : "primary";
     return classes;
@@ -29,7 +45,7 @@ class Counter extends Component {
   formatCount() {
     const { count } = this.state;
     return count === 0 ? "Zero" : count;
-  }*/
+  }
 }
 
 export default Counter;
