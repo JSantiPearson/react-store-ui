@@ -6,6 +6,14 @@ import "./App.css";
 
 class App extends Component {
   state = {
+    list: [
+      "Health Potion",
+      "Stamina Potion",
+      "Mana Potion",
+      "Speed Potion",
+      "Poison Vial",
+      "Luck Charm"
+    ],
     counters: [
       { id: 1, name: "Health Potion", value: 0 },
       { id: 2, name: "Stamina Potion", value: 0 },
@@ -35,10 +43,6 @@ class App extends Component {
     this.setState({ counters: counters });
   };
 
-  handleSearch = input => {
-    console.log("Search");
-  };
-
   handleReset = () => {
     const counters = this.state.counters.map(c => {
       c.value = 0;
@@ -56,7 +60,7 @@ class App extends Component {
         <Navbar
           totalCounters={this.state.counters.filter(c => c.value > 0).length}
         />
-        <ShopList onSearch={this.handleSearch} />
+        <ShopList items={this.state.list} onSearch={this.handleSearch} />
         <main className="container">
           <Counters
             counters={this.state.counters}
