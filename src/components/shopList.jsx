@@ -48,7 +48,6 @@ class ShopList extends Component {
     this.setState({
       filtered: newList
     });
-    console.log(newList);
   };
 
   render() {
@@ -72,6 +71,13 @@ class ShopList extends Component {
                 />
               </div>
             </div>
+          </div>
+          <div className="row">
+            {this.state.filtered.map(item => (
+              <div className="container" key={item.id}>
+                {item}
+              </div>
+            ))}
           </div>
         </div>
       </div>
