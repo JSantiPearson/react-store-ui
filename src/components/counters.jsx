@@ -19,8 +19,8 @@ class Counters extends Component {
 
     return (
       <div>
-        <div class="container">
-          <div class="row">
+        <div className="container">
+          <div className="row">
             <button
               style={divStyle}
               onClick={onReset}
@@ -30,7 +30,7 @@ class Counters extends Component {
             </button>
           </div>
           {/* delete this div for rows instead of columns */}
-          <div class="row">
+          <div className="row">
             {counters.map(counter => (
               <Counter
                 key={counter.id}

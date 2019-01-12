@@ -21,9 +21,17 @@ class ShopList extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  id={onSearch}
                   placeholder="Search for..."
                 />
+                <span className="input-group-btn">
+                  <button
+                    onClick={onSearch}
+                    className="btn btn-default"
+                    type="button"
+                  >
+                    Go!
+                  </button>
+                </span>
               </div>
             </div>
           </div>

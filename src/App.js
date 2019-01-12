@@ -35,6 +35,10 @@ class App extends Component {
     this.setState({ counters: counters });
   };
 
+  handleSearch = input => {
+    console.log("Search");
+  };
+
   handleReset = () => {
     const counters = this.state.counters.map(c => {
       c.value = 0;
@@ -52,7 +56,7 @@ class App extends Component {
         <Navbar
           totalCounters={this.state.counters.filter(c => c.value > 0).length}
         />
-        <ShopList />
+        <ShopList onSearch={this.handleSearch} />
         <main className="container">
           <Counters
             counters={this.state.counters}
