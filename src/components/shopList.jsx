@@ -5,17 +5,17 @@ class ShopList extends Component {
     filtered: []
   };
 
-  componentDidMount() {
-    this.setState({
-      filtered: this.props.items
-    });
-  }
+  //   componentDidMount() {
+  //     this.setState({
+  //       filtered: this.props.items
+  //     });
+  //   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      filtered: nextProps.items
-    });
-  }
+  //   componentWillReceiveProps(nextProps) {
+  //     this.setState({
+  //       filtered: nextProps.items
+  //     });
+  //   }
 
   handleChange = e => {
     // Variable to hold the original version of the list
@@ -42,7 +42,7 @@ class ShopList extends Component {
       });
     } else {
       // If the search bar is empty, set newList to original task list
-      newList = this.props.items;
+      newList = [];
     }
     // Set the filtered state based on what our rules added to newList
     this.setState({
@@ -51,6 +51,7 @@ class ShopList extends Component {
   };
 
   render() {
+    console.log(this.state.filtered);
     const divStyle = {
       fontSize: 20,
       position: "relative",
@@ -59,7 +60,7 @@ class ShopList extends Component {
     };
     return (
       <div style={divStyle}>
-        <div className="panel panel-default">
+        <div className="panel panel-default p-2 m-2">
           <div className="panel-body">
             <div className="col-lg-3">
               <div className="input-group">
@@ -74,8 +75,10 @@ class ShopList extends Component {
           </div>
           <div className="row">
             {this.state.filtered.map(item => (
-              <div className="container" key={item.id}>
-                {item}
+              <div className="container">
+                <div className="button btn btn-info" key={item.id}>
+                  {item}
+                </div>
               </div>
             ))}
           </div>
