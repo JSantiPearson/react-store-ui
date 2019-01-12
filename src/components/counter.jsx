@@ -3,6 +3,9 @@ import Glyphicon from "react-bootstrap/lib/Glyphicon";
 
 class Counter extends Component {
   render() {
+    const badgeStyle = {
+      width: 50
+    };
     const divStyle = {
       fontSize: 30
     };
@@ -10,9 +13,9 @@ class Counter extends Component {
       <div style={divStyle}>
         <span className="badge m-2">
           <div>
-            <span className="badge">{this.props.counter.id}</span>
+            <span className="badge">{this.props.counter.name}</span>
             <div>
-              <span className={this.getBadgeClasses()}>
+              <span style={badgeStyle} className={this.getBadgeClasses()}>
                 {this.formatCount()}
               </span>
               <div className="btn-group" role="group" aria-label="...">
@@ -48,7 +51,7 @@ class Counter extends Component {
     );
   }
   getBadgeClasses() {
-    let classes = "badge m-2 badge-";
+    let classes = "badge col-md-5 m-2 badge-";
     classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }

@@ -4,7 +4,10 @@ import Counter from "./counter";
 class Counters extends Component {
   render() {
     const divStyle = {
-      fontSize: 20
+      fontSize: 20,
+      position: "relative",
+      top: -10,
+      left: 5
     };
     const {
       onReset,
