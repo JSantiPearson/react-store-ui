@@ -1,33 +1,49 @@
 import React, { Component } from "react";
+import Glyphicon from "react-bootstrap/lib/Glyphicon";
 
 class Counter extends Component {
-  renderTags() {
-    if (this.state.tags.length === 0) return <p>There are no tags!</p>;
-    return (
-      <ul>
-        {this.state.tags.map(tag => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    );
-  }
-
   render() {
+    const divStyle = {
+      fontSize: 30
+    };
     return (
-      <div>
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button
-          onClick={() => this.props.onIncrement(this.props.counter)}
-          className="btn btn-secondary btn-sm"
-        >
-          Increment
-        </button>
-        <button
-          onClick={() => this.props.onDelete(this.props.counter.id)}
-          className="btn btn-danger btn-sm m-2"
-        >
-          Delete
-        </button>
+      <div style={divStyle}>
+        <span className="badge m-2">
+          <div>
+            <span className="badge">{this.props.counter.id}</span>
+            <div>
+              <span className={this.getBadgeClasses()}>
+                {this.formatCount()}
+              </span>
+              <div className="btn-group" role="group" aria-label="...">
+                <button
+                  onClick={() => this.props.onIncrement(this.props.counter)}
+                  className="btn btn-dark btn-sm"
+                >
+                  <span>
+                    <Glyphicon glyph="chevron-up" />
+                  </span>
+                </button>
+                <button
+                  onClick={() => this.props.onDecrement(this.props.counter)}
+                  className="btn btn-dark btn-sm"
+                >
+                  <span>
+                    <Glyphicon glyph="chevron-down" />
+                  </span>
+                </button>
+              </div>
+              <button
+                onClick={() => this.props.onDelete(this.props.counter.id)}
+                className="btn btn-danger btn-sm m-2"
+              >
+                <span>
+                  <Glyphicon glyph="trash" />
+                </span>
+              </button>
+            </div>
+          </div>
+        </span>
       </div>
     );
   }

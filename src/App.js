@@ -6,10 +6,10 @@ import "./App.css";
 class App extends Component {
   state = {
     counters: [
-      { id: 1, value: 0 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-      { id: 4, value: 0 }
+      { id: "Health Potion", value: 0 },
+      { id: "Stamina Potion", value: 0 },
+      { id: "Mana Potion", value: 0 },
+      { id: "Poison Vial", value: 0 }
     ]
   };
 
@@ -18,6 +18,14 @@ class App extends Component {
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
     counters[index].value++;
+    this.setState({ counters });
+  };
+
+  handleDecrement = counter => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    if (counters[index].value > 0) counters[index].value--;
     this.setState({ counters });
   };
 
@@ -38,6 +46,9 @@ class App extends Component {
   };
 
   render() {
+    const divStyle = {
+      fontSize: 30
+    };
     return (
       <React.Fragment>
         <Navbar
@@ -47,6 +58,7 @@ class App extends Component {
           <Counters
             counters={this.state.counters}
             onReset={this.handleReset}
+            onDecrement={this.handleDecrement}
             onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
           />
