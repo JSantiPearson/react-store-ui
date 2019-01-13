@@ -51,13 +51,13 @@ class ShopList extends Component {
   };
 
   render() {
-    console.log(this.state.filtered);
     const divStyle = {
       fontSize: 20,
       position: "relative",
       top: 20,
       left: 800
     };
+    const { onAdd } = this.props;
     return (
       <div style={divStyle}>
         <div className="panel panel-default p-2 m-2">
@@ -76,7 +76,10 @@ class ShopList extends Component {
           <div className="row">
             {this.state.filtered.map(item => (
               <div className="container">
-                <div className="button btn btn-info" key={item.id}>
+                <div
+                  className="button btn btn-info"
+                  onClick={() => this.props.onAdd(item)}
+                >
                   {item}
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./components/navbar";
 import Counters from "./components/counters";
+import Counter from "./components/counter";
 import ShopList from "./components/shopList";
 import "./App.css";
 
@@ -43,6 +44,18 @@ class App extends Component {
     this.setState({ counters: counters });
   };
 
+  handleAdd = counter => {
+    const counters = this.state.counters;
+    const newCounter = {
+      id: counters.length + 1,
+      name: counter,
+      value: 0
+    };
+    counters.push(newCounter);
+    this.setState({ counters: counters });
+    console.log({ counters });
+  };
+
   handleReset = () => {
     const counters = this.state.counters.map(c => {
       c.value = 0;
@@ -60,13 +73,18 @@ class App extends Component {
         <Navbar
           totalCounters={this.state.counters.filter(c => c.value > 0).length}
         />
-        <ShopList items={this.state.list} onSearch={this.handleSearch} />
+        <ShopList
+          items={this.state.list}
+          onAdd={this.handleAdd}
+          onSearch={this.handleSearch}
+        />
         <main className="container">
           <Counters
             counters={this.state.counters}
             onReset={this.handleReset}
             onDecrement={this.handleDecrement}
             onIncrement={this.handleIncrement}
+            onAdd={this.handleAdd}
             onDelete={this.handleDelete}
           />
         </main>
