@@ -13,13 +13,18 @@ class App extends Component {
       "Mana Potion",
       "Speed Potion",
       "Poison Vial",
-      "Luck Charm"
+      "Luck Charm",
+      "Phoenix Down",
+      "Antidote",
+      "Hero's Sword",
+      "Wooden Shield",
+      "Crossbow",
+      "Werewolf Fang"
     ],
     counters: [
       { id: 1, name: "Health Potion", value: 0 },
       { id: 2, name: "Stamina Potion", value: 0 },
-      { id: 3, name: "Mana Potion", value: 0 },
-      { id: 4, name: "Poison Vial", value: 0 }
+      { id: 3, name: "Mana Potion", value: 0 }
     ]
   };
 
@@ -35,6 +40,7 @@ class App extends Component {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
+    //don't decrement past zero
     if (counters[index].value > 0) counters[index].value--;
     this.setState({ counters });
   };
@@ -45,13 +51,16 @@ class App extends Component {
   };
 
   handleAdd = counter => {
+    //create a new counter object
     const counters = this.state.counters;
     const newCounter = {
       id: counters.length + 1,
       name: counter,
       value: 0
     };
+    //check if item is already in the list
     if (!counters.map(c => c.name).includes(counter)) {
+      // if it isn't, add it
       counters.push(newCounter);
       this.setState({ counters: counters });
       {
@@ -61,6 +70,7 @@ class App extends Component {
   };
 
   handleReset = () => {
+    //change value of all counters to zero
     const counters = this.state.counters.map(c => {
       c.value = 0;
       return c;
