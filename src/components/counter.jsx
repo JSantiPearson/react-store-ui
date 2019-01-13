@@ -11,9 +11,9 @@ class Counter extends Component {
     };
     return (
       <div style={divStyle}>
-        <span className="badge m-2">
+        <span className="badge badge-info m-2">
           <div>
-            <span className="badge">{this.props.counter.name}</span>
+            <span className="badge badge-info">{this.props.counter.name}</span>
             <div>
               <span style={badgeStyle} className={this.getBadgeClasses()}>
                 {this.formatCount()}

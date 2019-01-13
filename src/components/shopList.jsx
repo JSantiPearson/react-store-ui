@@ -5,18 +5,6 @@ class ShopList extends Component {
     filtered: []
   };
 
-  //   componentDidMount() {
-  //     this.setState({
-  //       filtered: this.props.items
-  //     });
-  //   }
-
-  //   componentWillReceiveProps(nextProps) {
-  //     this.setState({
-  //       filtered: nextProps.items
-  //     });
-  //   }
-
   handleChange = e => {
     // Variable to hold the original version of the list
     let currentList = [];

@@ -51,9 +51,13 @@ class App extends Component {
       name: counter,
       value: 0
     };
-    counters.push(newCounter);
-    this.setState({ counters: counters });
-    console.log({ counters });
+    if (!counters.map(c => c.name).includes(counter)) {
+      counters.push(newCounter);
+      this.setState({ counters: counters });
+      {
+        counters.map(counter => <Counter key={counter.id} />);
+      }
+    }
   };
 
   handleReset = () => {
