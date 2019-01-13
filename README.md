@@ -2,7 +2,7 @@
 
 This is a React application meant for testing and getting familiar with the library.
 
-###Features:
+### Features:
 
 - Searching the store's inventory for items you want
 - Adding those items to your cart
